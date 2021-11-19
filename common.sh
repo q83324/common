@@ -1,5 +1,5 @@
 #!/bin/bash
-# https://github.com/281677160/AutoBuild-OpenWrt
+# https://github.com.cnpmjs.org/281677160/AutoBuild-OpenWrt
 # common Module by 28677160
 # matrix.target=${Modelfile}
 
@@ -33,9 +33,9 @@ find . -name 'UnblockNeteaseMusic-Go' -o -name 'UnblockNeteaseMusic' -o -name 'l
 
 sed -i '/to-ports 53/d' $ZZZ
 
-git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+git clone https://github.com.cnpmjs.org/xiaorouji/openwrt-passwall package/luci-app-passwall
 rm -rf package/luci-app-passwall/{v2ray-core,v2ray-plugin,xray-core,xray-plugin}
-git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
+git clone https://github.com.cnpmjs.org/fw876/helloworld package/luci-app-ssr-plus
 
 sed -i "/exit 0/i\chmod +x /etc/webweb.sh && source /etc/webweb.sh" $ZZZ
 
@@ -76,9 +76,9 @@ find . -name 'ddns-scripts_aliyun' -o -name 'ddns-scripts_dnspod' -o -name 'luci
 find . -name 'luci-app-wrtbwmon' -o -name 'wrtbwmon' -o -name 'pdnsd-alt' | xargs -i rm -rf {}
 find . -name 'UnblockNeteaseMusic-Go' -o -name 'UnblockNeteaseMusic' -o -name 'luci-app-unblockmusic' | xargs -i rm -rf {}
 rm -rf feeds/packages/libs/libcap
-git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+git clone https://github.com.cnpmjs.org/xiaorouji/openwrt-passwall package/luci-app-passwall
 rm -rf package/luci-app-passwall/{v2ray-core,v2ray-plugin,xray-core,xray-plugin}
-git clone https://github.com/281677160/ssr package/luci-app-ssr-plus
+git clone https://github.com.cnpmjs.org/281677160/ssr package/luci-app-ssr-plus
 
 sed -i 's/DEFAULT_PACKAGES +=/DEFAULT_PACKAGES += luci-app-passwall/g' target/linux/x86/Makefile
 sed -i "/exit 0/i\chmod +x /etc/webweb.sh && source /etc/webweb.sh" $ZZZ
@@ -111,11 +111,11 @@ find . -name 'luci-app-wrtbwmon' -o -name 'wrtbwmon' | xargs -i rm -rf {}
 # 全部作者源码公共diy.sh文件
 ################################################################################################################
 Diy_all() {
-git clone --depth 1 -b "${REPO_BRANCH}" https://github.com/281677160/openwrt-package
+git clone --depth 1 -b "${REPO_BRANCH}" https://github.com.cnpmjs.org/281677160/openwrt-package
 cp -Rf openwrt-package/* "${Home}" && rm -rf "${Home}"/openwrt-package
 
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
-	git clone https://github.com/281677160/luci-app-autoupdate feeds/luci/applications/luci-app-autoupdate
+	git clone https://github.com.cnpmjs.org/281677160/luci-app-autoupdate feeds/luci/applications/luci-app-autoupdate
 	cp -Rf "${PATH1}"/{AutoUpdate.sh,replace.sh} package/base-files/files/bin
 fi
 if [[ "${REPO_BRANCH}" == "master" ]]; then
@@ -131,7 +131,7 @@ elif [[ "${REPO_BRANCH}" == "openwrt-18.06" ]]; then
 	cp -Rf "${Home}"/build/common/TIANLING/diy/* "${Home}"
 	cp -Rf "${Home}"/build/common/TIANLING/patches/* "${PATH1}/patches"
 	rm -rf package/emortal/default-settings
-	svn co https://github.com/Lienol/openwrt/trunk/package/default-settings package/emortal/default-settings
+	svn co https://github.com.cnpmjs.org/Lienol/openwrt/trunk/package/default-settings package/emortal/default-settings
 	chmod 775 ${Home}/build/common/Convert/1806zzz-default-settings
 	cp -Rf ${Home}/build/common/Convert/1806zzz-default-settings package/emortal/default-settings/files/zzz-default-settings
 elif [[ "${REPO_BRANCH}" == "openwrt-21.02" ]]; then
@@ -171,7 +171,7 @@ fi
 ################################################################################################################
 Diy_amlogic() {
 if [[ -n "$(ls -A "$GITHUB_WORKSPACE/amlogic_openwrt" 2>/dev/null)" ]]; then
-	git clone https://github.com/ophub/amlogic-s9xxx-openwrt
+	git clone https://github.com.cnpmjs.org/ophub/amlogic-s9xxx-openwrt
 	mv amlogic-s9xxx-openwrt/{amlogic-s9xxx,make} $GITHUB_WORKSPACE
 	rm -rf amlogic-s9xxx-openwrt
 	source $GITHUB_WORKSPACE/amlogic_openwrt
@@ -435,7 +435,7 @@ if [[ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' 
 	if [[ "${Arch}" =~ (amd64|i386|arm64|armv7) ]]; then
 		downloader="curl -L -k --retry 2 --connect-timeout 20 -o"
 		latest_ver="$($downloader - https://api.github.com/repos/AdguardTeam/AdGuardHome/releases/latest 2>/dev/null|grep -E 'tag_name' |grep -E 'v[0-9.]+' -o 2>/dev/null)"
-		wget -q https://github.com/AdguardTeam/AdGuardHome/releases/download/${latest_ver}/AdGuardHome_linux_${Arch}.tar.gz
+		wget -q https://github.com.cnpmjs.org/AdguardTeam/AdGuardHome/releases/download/${latest_ver}/AdGuardHome_linux_${Arch}.tar.gz
 		tar -zxvf AdGuardHome_linux_${Arch}.tar.gz -C ${Home} > /dev/null 2>&1
 		mkdir -p files/usr/bin
 		mv -f AdGuardHome/AdGuardHome files/usr/bin
@@ -542,7 +542,7 @@ echo
 
 Diy_tongzhi() {
 GONGGAO g "请大家重新FORK仓库，更新到最新版仓库，新版仓库更改很多，请看说明操作"
-GONGGAO r "https://github.com/281677160/build-actions"
+GONGGAO r "https://github.com.cnpmjs.org/281677160/build-actions"
 echo
 echo
 exit 1
